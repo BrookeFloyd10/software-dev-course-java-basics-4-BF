@@ -8,6 +8,8 @@ public class StudentManager {
     private Scanner scanner = new Scanner(System.in);
     private List<String> students = new ArrayList<>();
 
+    String newLine = System.lineSeparator();
+
     public void mainMenu() {
         System.out.println("Welcome to the student manager!");
         System.out.println("1. Add student");
@@ -28,6 +30,7 @@ public class StudentManager {
             System.exit(0);
         } else {
             System.out.println("Invalid choice. Please try again.");
+            mainMenu();
         }
     }
 
@@ -35,7 +38,10 @@ public class StudentManager {
         // Prompt the user to enter a new student name (using scanner and I/O methods learned previously,
         // refer to mainMenu() for an example)
         // Add the student to the list
-
+        System.out.println(newLine + "Please enter the name of the new student: ");
+        String name = scanner.nextLine();
+        students.add(name);
+        System.out.println("Student added.");
         mainMenu();
     }
 
@@ -43,13 +49,20 @@ public class StudentManager {
         // Prompt the user for a student name
         // Use the contains method to check if the student entered is in the list
         // If so, remove it, if not, print "Student not found."
-
+        System.out.println(newLine + "Please enter the name of the student you wish to remove: ");
+        String name = scanner.nextLine();
+        students.remove(name);
+        System.out.println("Student removed.");
         mainMenu();
     }
 
     public void viewStudents() {
         // Loop through the list of students and print each one
         // (Use a for-each loop!)
+        System.out.println("Students: ");
+        for(String student : students) {
+            System.out.println(student);
+        }
         mainMenu();
     }
 }
